@@ -42,5 +42,3 @@ retrain.py: Es el motor de mejora continua. Toma las imágenes que acumulaste en
 count_data.py: Es tu herramienta de validación técnica. Su único objetivo es verificar que Python pueda encontrar tus carpetas y contar correctamente las imágenes antes de ejecutar procesos más pesados. Si este script falla, te avisa que las rutas están mal configuradas.
 
 requirements.txt: Es el archivo de configuración de dependencias. Sirve para que cualquier persona (o cualquier máquina, como la nueva que estás configurando) pueda instalar exactamente las mismas versiones de librerías que tú utilizaste, evitando errores de compatibilidad.
-
-¿Necesitas ayuda para pro
