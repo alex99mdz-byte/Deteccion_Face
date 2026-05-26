@@ -4,3 +4,43 @@ Pillow>=8.0.0
 h5py>=3.1.0
 matplotlib>=3.0.0
 # Note: tkinter is part of the Python standard library (no pip package).
+
+DeteccionFace/
+├── .venv/
+├── correcciones/
+│   ├── edad/
+│   └── emocion/
+├── dataset/
+│   ├── edad/
+│   └── emocion/
+├── modelo/
+│   ├── edad.keras
+│   └── emocion.keras
+├── app.py
+├── count_data.py
+├── preprocess.py
+├── README.md
+├── requirements.txt
+└── retrain.py
+
+📁 Estructura del Proyecto: DeteccionFace
+.venv/: Es tu entorno virtual aislado. Su función es contener todas las librerías necesarias (como TensorFlow, OpenCV, Keras) específicas para este proyecto, asegurando que no entren en conflicto con otras aplicaciones de tu computadora.
+
+dataset/: Es la base de conocimiento de tu IA. Contiene las imágenes organizadas en subcarpetas (edad/ y emocion/) que el modelo utiliza para "aprender" a identificar patrones mediante entrenamiento.
+
+modelo/: Es el almacén de "conocimiento" ya procesado. Aquí se guardan los archivos .keras (como edad.keras y emocion.keras), que son el resultado del entrenamiento; estos archivos son los que usa app.py para realizar las predicciones en tiempo real.
+
+correcciones/: Es una pieza clave para el "Aprendizaje Activo" (Human-in-the-Loop). Cuando la IA falla, tu interfaz mueve las imágenes a estas carpetas específicas para que tú, como supervisor, las clasifiques correctamente y las integres al dataset en futuras iteraciones.
+
+⚙️ Archivos de Código (Lógica)
+app.py: Es el corazón de tu aplicación. Utiliza una interfaz gráfica (tkinter) para que puedas cargar imágenes, visualizarlas y realizar predicciones instantáneas llamando a los modelos guardados.
+
+preprocess.py: Su función es estandarizar tus datos antes de entrenar. Se encarga de redimensionar y normalizar las imágenes (dividiendo por 255.0) para asegurar que el formato de entrada sea idéntico al que el modelo aprendió durante su fase de entrenamiento.
+
+retrain.py: Es el motor de mejora continua. Toma las imágenes que acumulaste en la carpeta correcciones/, las integra al dataset original y vuelve a entrenar los modelos, permitiendo que la IA corrija sus errores pasados de forma automatizada.
+
+count_data.py: Es tu herramienta de validación técnica. Su único objetivo es verificar que Python pueda encontrar tus carpetas y contar correctamente las imágenes antes de ejecutar procesos más pesados. Si este script falla, te avisa que las rutas están mal configuradas.
+
+requirements.txt: Es el archivo de configuración de dependencias. Sirve para que cualquier persona (o cualquier máquina, como la nueva que estás configurando) pueda instalar exactamente las mismas versiones de librerías que tú utilizaste, evitando errores de compatibilidad.
+
+¿Necesitas ayuda para pro
